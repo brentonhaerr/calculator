@@ -3,6 +3,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Display from './components/Display';
 import CalcContextProvider from './contexts/CalcContext';
+import NumpadButton from './components/NumpadButton';
 
 
 function App() {
@@ -10,6 +11,8 @@ function App() {
     <div id="calculator" className="App container p-3">
       <CalcContextProvider>
         <Display />
+        <NumpadButton id="one" value="1" />
+        <NumpadButton id="two" value="2" />
       </CalcContextProvider>
     </div>
   );
