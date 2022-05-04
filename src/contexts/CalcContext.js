@@ -1,20 +1,13 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useReducer } from 'react';
+import { calcReducer } from '../reducers/calcReducer';
 
 export const CalcContext = createContext();
 
 const CalcContextProvider = (props) => {
-  const [total, setTotal] = useState(0);
-
-  const add = (value) => {
-    setTotal(total+parseInt(value));
-  }
-
-  const subtract = (value) => {
-    setTotal(total-parseInt(value));
-  }
+  const [total, dispatch] = useReducer(calcReducer, 0);
 
   return ( 
-    <CalcContext.Provider value={{ total, add, subtract}}>
+    <CalcContext.Provider value={{ total, dispatch }}>
       { props.children }
     </CalcContext.Provider>
    );
