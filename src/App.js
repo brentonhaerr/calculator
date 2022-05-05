@@ -24,6 +24,8 @@ function App() {
         <NumpadButton id="zero" value="0" />
         <FunctionButton id="clear" action="CLEAR" name="C"  />
         <FunctionButton id="all-clear" action="ALLCLEAR" name="AC"  />
+        <FunctionButton id="add" action="ADD" name="+"  />
+        <FunctionButton id="subtract" action="SUBTRACT" name="-"  />
       </CalcContextProvider>
     </div>
   );

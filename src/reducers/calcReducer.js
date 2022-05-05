@@ -1,20 +1,23 @@
 export const calcReducer = (state, action) => {
+  let new_total;
   switch (action.type) {
     case "SET_INPUT":
       // Add check here to prevent leading zeroes.
-      if (state.input == "0") {
-        return { ...state, input: action.value }
+      if (state.display == "0") {
+        return { ...state, display: action.value }
       } else {
-        return { ...state, input: state.input + action.value }
+        return { ...state, display: state.display + action.value }
       }
     case "ADD":
-      return { ...state, total: state.total + parseInt(action.value), input: 0 }
+      new_total = state.total + parseInt(state.display);
+      return { ...state, total: new_total, display: new_total }
     case "SUBTRACT":
-      return { ...state, total: state.total - parseInt(action.value), input: 0 }
+      new_total = state.total - parseInt(state.display)
+      return { ...state, total: new_total, display: new_total }
     case "CLEAR":
-      return { ...state, input: 0 };
+      return { ...state, display: 0 };
     case "ALLCLEAR":
-      return { ...state, total: 0, input: 0 };
+      return { ...state, total: 0, display: 0 };
     default:
       return state;
   }

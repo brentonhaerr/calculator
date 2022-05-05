@@ -4,10 +4,10 @@ import { calcReducer } from '../reducers/calcReducer';
 export const CalcContext = createContext();
 
 const CalcContextProvider = (props) => {
-  const [{total, input, current_op}, dispatch] = useReducer(calcReducer, {total: 0, input: 0});
+  const [{total, display, current_op}, dispatch] = useReducer(calcReducer, {total: 0, display: 0, current_op: "INPUT"});
 
   return ( 
-    <CalcContext.Provider value={{ total, input, current_op, dispatch }}>
+    <CalcContext.Provider value={{ total, display, current_op, dispatch }}>
       { props.children }
     </CalcContext.Provider>
    );
