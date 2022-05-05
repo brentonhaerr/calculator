@@ -7,7 +7,7 @@ const NumpadButton = (props) => {
   return (
     <button id={props.id} className="m-1"
       onClick={() => {
-        dispatch({ type: "ADD", value: props.value })
+        dispatch({ type: "SET_INPUT", value: props.value })
       }}>
       {props.value}
     </button>
