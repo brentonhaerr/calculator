@@ -1,5 +1,6 @@
-import { nodeName } from 'jquery';
 import * as modes from '../constants/calc_modes';
+import { evaluate, mode } from 'mathjs';
+
 
 function strip_zeroes (state, action) {
   if ( state.display == 0) {
@@ -10,7 +11,7 @@ function strip_zeroes (state, action) {
 }
 
 function calculate_total(ops_list) {
-
+  return evaluate(ops_list);
 }
 
 export const calcReducer = (state, action) => {
@@ -25,6 +26,9 @@ export const calcReducer = (state, action) => {
         return {...state, display: strip_zeroes(state, action), mode: modes.DISPLAY_INPUT}
       }
     }
+    case modes.EQUALS:
+      let total = evaluate(state.ops_list + state.display);
+      return {...state, display: 0, ops_list: state.ops_list + state.display, total: total, mode: modes.DISPLAY_TOTAL }
     case modes.ADD:
       return { ...state, display: 0, ops_list: state.ops_list + state.display + "+", mode: modes.DISPLAY_TOTAL }
     case modes.SUBTRACT:

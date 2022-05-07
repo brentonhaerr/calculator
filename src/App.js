@@ -5,7 +5,7 @@ import Display from './components/Display';
 import CalcContextProvider from './contexts/CalcContext';
 import NumpadButton from './components/NumpadButton';
 import FunctionButton from './components/FunctionButton';
-
+import * as modes from './constants/calc_modes';
 
 function App() {
   return (
@@ -22,10 +22,11 @@ function App() {
         <NumpadButton id="eight" value="8" />
         <NumpadButton id="nine" value="9" />
         <NumpadButton id="zero" value="0" />
-        <FunctionButton id="clear" action="CLEAR" name="C"  />
-        <FunctionButton id="all-clear" action="ALLCLEAR" name="AC"  />
-        <FunctionButton id="add" action="ADD" name="+"  />
-        <FunctionButton id="subtract" action="SUBTRACT" name="-"  />
+        <FunctionButton id="clear" action={modes.CLEAR} name="C"  />
+        <FunctionButton id="all-clear" action={modes.ALLCLEAR} name="AC"  />
+        <FunctionButton id="add" action={modes.ADD} name="+"  />
+        <FunctionButton id="subtract" action={modes.SUBTRACT} name="-"  />
+        <FunctionButton id="equals" action={modes.EQUALS} name="="  />
       </CalcContextProvider>
     </div>
   );
