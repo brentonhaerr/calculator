@@ -1,5 +1,5 @@
 import * as modes from '../constants/calc_modes';
-import { evaluate, mode } from 'mathjs';
+import { evaluate, add } from 'mathjs';
 
 
 function strip_zeroes(state, action) {
@@ -43,7 +43,12 @@ export const calcReducer = (state, action) => {
         // CLear the ops list if we're continuing right after displaying a total.
         return { ...state, display: 0, ops_list: state.total + "-", mode: modes.DISPLAY_TOTAL }
       }
-
+    case modes.DECIMAL:
+      if (state.display.includes('.')) {
+        return state;
+      } else {
+        return {...state, display: state.display+"."}
+      }
     case modes.CLEAR:
       return { ...state, display: 0, mode: modes.DISPLAY_INPUT };
     case modes.ALLCLEAR:

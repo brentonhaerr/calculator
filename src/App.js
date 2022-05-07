@@ -22,11 +22,13 @@ function App() {
         <NumpadButton id="eight" value="8" />
         <NumpadButton id="nine" value="9" />
         <NumpadButton id="zero" value="0" />
+        <FunctionButton id="decimal" action={modes.DECIMAL} name="."  />
         <FunctionButton id="clear" action={modes.CLEAR} name="C"  />
         <FunctionButton id="all-clear" action={modes.ALLCLEAR} name="AC"  />
         <FunctionButton id="add" action={modes.ADD} name="+"  />
         <FunctionButton id="subtract" action={modes.SUBTRACT} name="-"  />
         <FunctionButton id="equals" action={modes.EQUALS} name="="  />
+        <FunctionButton id="decimal" action={modes.DECIMAL} name="."  />
       </CalcContextProvider>
     </div>
   );

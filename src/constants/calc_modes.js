@@ -8,3 +8,4 @@ export const ALLCLEAR = "ALLCLEAR";
 export const MULTIPLY = "MULTIPLY";
 export const DIVIDE = "DIVIDE";
 export const EQUALS = "EQUALS";
+export const DECIMAL = "DECIMAL";
