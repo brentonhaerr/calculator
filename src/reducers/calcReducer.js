@@ -14,11 +14,17 @@ function calculate_total(ops_list) {
   return evaluate(ops_list);
 }
 
-export const calcReducer = (state, action) => {
+/* export const calcReducer = (state, action) => {
+  
+  const last_input = (state) => {
+    alert(state.ops_list);
+  }
+
   let new_total;
   switch (action.type) {
     case modes.NUMBER_ENTRY: {
       if (state.mode == modes.DISPLAY_INPUT) {
+        last_input(state);
         // Just add to the current input if we're already inputting.
         return { ...state, display: strip_zeroes(state, action) }
       } else if (state.mode == modes.DISPLAY_TOTAL) {
@@ -28,7 +34,7 @@ export const calcReducer = (state, action) => {
     }
     case modes.EQUALS:
       let total = evaluate(state.ops_list + state.display);
-      return { ...state, display: 0, ops_list: "", total: total, mode: modes.DISPLAY_TOTAL }
+      return { ...state, display: 0, ops_list: state.ops_list+"="+total, total: total, mode: modes.DISPLAY_TOTAL }
     case modes.ADD:
       if (state.mode === modes.DISPLAY_INPUT) {
         return { ...state, display: 0, ops_list: state.ops_list + state.display + "+", mode: modes.DISPLAY_TOTAL }
@@ -56,4 +62,8 @@ export const calcReducer = (state, action) => {
     default:
       return state;
   }
+} */
+
+export const calcReducer = (state, action) => {
+  return state;
 }
