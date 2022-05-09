@@ -11,7 +11,9 @@ const Display = () => {
           { ops_list === "" ? 0 : ops_list }
         </div>
         <div id="display" className="col-11 text-end fs-1">
-          { mode === modes.DISPLAY_TOTAL ? total : display }
+          { /*mode === modes.DISPLAY_TOTAL ? total : display*/ 
+            display === '' ? 0 : display
+          }
         </div>
       </div>
     </div>

@@ -27,6 +27,8 @@ function App() {
         <FunctionButton id="all-clear" action={modes.ALLCLEAR} name="AC"  />
         <FunctionButton id="add" action={modes.ADD} name="+"  />
         <FunctionButton id="subtract" action={modes.SUBTRACT} name="-"  />
+        <FunctionButton id="multiply" action={modes.MULTIPLY} name="&#215;"  />
+        <FunctionButton id="divide" action={modes.DIVIDE} name="/"  />
         <FunctionButton id="equals" action={modes.EQUALS} name="="  />
         <FunctionButton id="decimal" action={modes.DECIMAL} name="."  />
       </CalcContextProvider>

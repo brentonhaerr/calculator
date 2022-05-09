@@ -9,3 +9,4 @@ export const MULTIPLY = "MULTIPLY";
 export const DIVIDE = "DIVIDE";
 export const EQUALS = "EQUALS";
 export const DECIMAL = "DECIMAL";
+export const NEGATIVE = "NEGATIVE";

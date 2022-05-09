@@ -64,6 +64,34 @@ function calculate_total(ops_list) {
   }
 } */
 
+function was_operation(action) {
+  if (action == null) {
+    return false;
+  }
+
+
+  let operations = [
+    act.ADD,
+    act.SUBTRACT,
+    act.DIVIDE,
+    act.MULTIPLY
+  ]
+
+  if (operations.includes(action.type)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function is_blank_slate(state) {
+  if (state.display === '') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export const calcReducer = (state, action) => {
   switch (action.type) {
     case act.NUMBER_ENTRY:
@@ -71,17 +99,46 @@ export const calcReducer = (state, action) => {
       let input = strip_zeroes(state, action);
       return { ...state, last_action: action, display: input }
     case act.ADD:
-      return { ...state, last_action: action, display: '0', ops_list: state.ops_list + state.display + "+" }
+      if (was_operation(state.last_action)) {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list.slice(0, -1) + "+" }
+      } else {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list + state.display + "+" }
+      }
+    case act.SUBTRACT:
+      if (was_operation(state.last_action)) {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list.slice(0, -1) + "-" }
+      } else {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list + state.display + "-" }
+      }
+    case act.MULTIPLY:
+      if (was_operation(state.last_action)) {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list.slice(0, -1) + "*" }
+      } else {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list + state.display + "*" }
+      }
+    case act.DIVIDE:
+      if (was_operation(state.last_action)) {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list.slice(0, -1) + "/" }
+      } else {
+        return { ...state, last_action: action, display: '', ops_list: state.ops_list + state.display + "/" }
+      }
+    case act.EQUALS:
+      let total = evaluate(state.ops_list + state.display);
+      return { ...state, display: 0, last_action: act.EQUALS, ops_list: state.ops_list + state.display + "=" + total }
     case act.DECIMAL:
+
+      if (is_blank_slate(state)) {
+        return { ...state, display: '0.' }
+      }
 
       // Prevent adding two decimals to a number.
       if (state.display.includes('.')) {
         return state;
       } else {
-        return {...state, last_action: action, display: state.display+"."}
+        return { ...state, last_action: action, display: state.display + "." }
       }
     case act.ALLCLEAR:
-      return { ...state, last_action: action, display: '0' }
+      return { ...state, last_action: action, display: '' }
     default:
       return state;
   }
