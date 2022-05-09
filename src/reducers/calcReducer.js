@@ -1,9 +1,9 @@
-import * as modes from '../constants/calc_modes';
+import * as act from '../constants/calc_modes';
 import { evaluate, add } from 'mathjs';
 
 
 function strip_zeroes(state, action) {
-  if (state.display == 0) {
+  if (state.display === '0') {
     return action.value;
   } else {
     return state.display + action.value;
@@ -65,5 +65,24 @@ function calculate_total(ops_list) {
 } */
 
 export const calcReducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case act.NUMBER_ENTRY:
+      // Eliminate a leading 0 when entering numbers.
+      let input = strip_zeroes(state, action);
+      return { ...state, last_action: action, display: input }
+    case act.ADD:
+      return { ...state, last_action: action, display: '0', ops_list: state.ops_list + state.display + "+" }
+    case act.DECIMAL:
+
+      // Prevent adding two decimals to a number.
+      if (state.display.includes('.')) {
+        return state;
+      } else {
+        return {...state, last_action: action, display: state.display+"."}
+      }
+    case act.ALLCLEAR:
+      return { ...state, last_action: action, display: '0' }
+    default:
+      return state;
+  }
 }
