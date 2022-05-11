@@ -5,10 +5,10 @@ import * as modes from '../constants/calc_modes';
 export const CalcContext = createContext();
 
 const CalcContextProvider = (props) => {
-  const [{total, display, ops_list, mode }, dispatch] = useReducer(calcReducer, {total: 0, display: 0, ops_list: "", mode: modes.DISPLAY_TOTAL });
+  const [{total, display, ops_list, last_action, mode }, dispatch] = useReducer(calcReducer, { display: "", ops_list: "", last_action: {type: modes.EQUALS}, mode: modes.DISPLAY_INPUT });
 
   return ( 
-    <CalcContext.Provider value={{ total, display, ops_list, mode, dispatch }}>
+    <CalcContext.Provider value={{ display, ops_list, mode, dispatch }}>
       { props.children }
     </CalcContext.Provider>
    );
