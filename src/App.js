@@ -12,6 +12,7 @@ function App() {
     <div id="calculator" className="App container p-3">
       <CalcContextProvider>
         <Display />
+        <NumpadButton id="zero" value="0" />
         <NumpadButton id="one" value="1" />
         <NumpadButton id="two" value="2" />
         <NumpadButton id="three" value="3" />
@@ -21,7 +22,6 @@ function App() {
         <NumpadButton id="seven" value="7" />
         <NumpadButton id="eight" value="8" />
         <NumpadButton id="nine" value="9" />
-        <NumpadButton id="zero" value="0" />
         <FunctionButton id="decimal" action={modes.DECIMAL} name="."  />
         <FunctionButton id="clear" action={modes.ALLCLEAR} name="C"  />
         <FunctionButton id="all-clear" action={modes.ALLCLEAR} name="AC"  />
