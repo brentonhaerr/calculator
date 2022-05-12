@@ -27,3 +27,11 @@ code {
   color: #222;
   font-family: DigiMono;
 }
+
+#display {
+  min-height: 1.5em;
+}
+
+#ops-list {
+  min-height: 1.5em;
+}
