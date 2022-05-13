@@ -82,7 +82,34 @@ function process_equals(state, action) {
 function process_non_subtraction_operations(state, action) {
   // We separate subtraction since it can also swap back and forth between
   // negative and positive, so it works differently.
-  return state;
+  let icon;
+  switch (action.type) {
+    case act.ADD:
+      icon = '+';
+      break;
+    case act.MULTIPLY:
+      icon = '*';
+      break;
+    case act.DIVIDE:
+      icon = '/';
+      break;
+    default:
+      alert("Non-standard action type reached by process_non_subtraction_operations");
+      break;
+  }
+
+  // Start a new equation if immediately after receiving a total
+  if (state.mode === modes.SHOW_TOTAL) {
+    return { ...state, last_action: action, display: '', ops_list: state.display + icon, mode: modes.SHOW_INPUT }
+  }
+
+  // Swap operations if pressed after another operation
+  if ([act.ADD, act.MULTIPLY, act.DIVIDE, act.SUBTRACT].includes(state.last_action.type)) {
+    return { ...state, last_action: action, display: '', ops_list: state.ops_list.slice(0, -1) + icon }
+  }
+
+  // Add the operation to the ops_list otherwise
+  return { ...state, last_action: action, display: '', ops_list: state.ops_list + state.display + icon }
 }
 
 function process_subtraction_operation(state, action) {
