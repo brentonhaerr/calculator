@@ -7,7 +7,7 @@ import { newCalcReducer } from '../reducers/newCalcReducer';
 export const CalcContext = createContext();
 
 const CalcContextProvider = (props) => {
-  const [{total, display, ops_list, last_action, mode }, dispatch] = useReducer(newCalcReducer, { display: "", ops_list: "", last_action: {type: acts.EQUALS}, mode: modes.SHOW_INPUT });
+  const [{total, display, ops_list, last_action, mode }, dispatch] = useReducer(newCalcReducer, { display: "0", ops_list: "", last_action: {type: acts.EQUALS}, mode: modes.SHOW_TOTAL });
 
   return ( 
     <CalcContext.Provider value={{ display, ops_list, mode, dispatch }}>

@@ -29,7 +29,7 @@ function process_numbers(state, action) {
     return { ...state, last_action: action, display: action.value, ops_list: '', mode: modes.SHOW_INPUT }
   }
 
-  // Replace the default 0 with whatever we are typing.
+  // Prevent leading zeroes.
   if (state.display === '0') {
     return { ...state, last_action: action, display: action.value }
   }
@@ -38,7 +38,7 @@ function process_numbers(state, action) {
 }
 
 function process_clear(state, action) {
-  return { ...state, ops_list: '', last_action: action, display: '', mode: modes.SHOW_TOTAL }
+  return { ...state, ops_list: '', last_action: action, display: '0', mode: modes.SHOW_TOTAL }
 }
 
 function process_decimal(state, action) {
@@ -68,7 +68,7 @@ function process_equals(state, action) {
     return state;
   }
 
-  // Correct error if operation left in last value
+  // Strip last operator if no value is input.
   if (state.display === '') {
     state = { ...state, ops_list: state.ops_list.slice(0, -1) }
   }

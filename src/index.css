@@ -30,8 +30,10 @@ code {
 
 #display {
   min-height: 1.5em;
+  overflow-x: clip;
 }
 
 #ops-list {
   min-height: 1.5em;
+  overflow-x: clip;
 }
