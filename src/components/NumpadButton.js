@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { CalcContext } from '../contexts/CalcContext';
 import * as acts from '../constants/calc_actions';
 

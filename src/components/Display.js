@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 import { CalcContext } from '../contexts/CalcContext';
-import * as modes from '../constants/calc_modes';
 
 const Display = () => {
-  const { display, total, ops_list, mode } = useContext(CalcContext);
+  const { display, ops_list } = useContext(CalcContext);
   return (
     <div id="screen">
       <div className="row justify-content-center">

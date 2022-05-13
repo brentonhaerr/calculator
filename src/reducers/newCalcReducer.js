@@ -1,6 +1,6 @@
 import * as act from '../constants/calc_actions';
 import * as modes from '../constants/calc_modes';
-import { evaluate, add, mode } from 'mathjs';
+import { evaluate } from 'mathjs';
 
 export const newCalcReducer = (state, action) => {
   switch (action.type) {
