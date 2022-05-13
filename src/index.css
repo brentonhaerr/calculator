@@ -27,3 +27,13 @@ code {
   color: #222;
   font-family: DigiMono;
 }
+
+#display {
+  min-height: 1.5em;
+  overflow-x: clip;
+}
+
+#ops-list {
+  min-height: 1.5em;
+  overflow-x: clip;
+}
