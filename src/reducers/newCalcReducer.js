@@ -57,16 +57,20 @@ function process_decimal(state, action) {
 }
 
 function process_equals(state, action) {
+
+  // Do nothing if we're in show total mode.
+  if (state.mode === modes.SHOW_TOTAL) {
+    return state;
+  }
+
   // Do nothing if incomplete equation is present
   if (state.ops_list === '') {
     return state;
   }
 
   // Correct error if operation left in last value
-  alert('last char: ' + state.display)
-  if ('*/-+'.includes(state.display[state.display.length-1])) {
-    alert('operation found at end of line');
-    state = { ...state, display: state.display.slice(0, -1)}
+  if (state.display === '') {
+    state = { ...state, ops_list: state.ops_list.slice(0, -1) }
   }
 
   // Otherwise, return the total, add it to display and ops list, and set
