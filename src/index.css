@@ -18,7 +18,7 @@ code {
 }
 
 #calculator {
-  max-width: 450px;
+  max-width: 400px;
   background-color: #555;
 }
 
@@ -36,4 +36,8 @@ code {
 #ops-list {
   min-height: 1.5em;
   overflow-x: clip;
+}
+
+.btn {
+  width: 100%;
 }
