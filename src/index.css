@@ -20,12 +20,15 @@ code {
 #calculator {
   max-width: 400px;
   background-color: #555;
+  border-radius: 1em;
+  padding: 0;
 }
 
 #screen {
   background-color: #888;
   color: #222;
   font-family: DigiMono;
+  border-radius: .5em;
 }
 
 #display {
@@ -38,6 +41,12 @@ code {
   overflow-x: clip;
 }
 
+button {
+  width: 100%;
+  height: 100%;
+}
+
 .btn {
   width: 100%;
+  margin: 0;
 }
