@@ -5,7 +5,7 @@ const FunctionButton = (props) => {
   const { dispatch } = useContext(CalcContext);
 
   return (
-    <button id={props.id} className="" onClick={() => {dispatch({type: props.action})}}>{props.name}</button>
+    <button id={props.id} className={props.classes} onClick={() => {dispatch({type: props.action})}}>{props.name}</button>
   );
 }
 

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="container">
       <div className="row vh-100 align-content-center">
-        <div id="calculator" className="App container p-3">
+        <div id="calculator" className="App container">
           <CalcContextProvider>
             <Display />
             <ControlPad />

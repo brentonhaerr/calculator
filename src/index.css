@@ -21,7 +21,11 @@ code {
   max-width: 400px;
   background-color: #555;
   border-radius: 1em;
-  padding: 0;
+  padding: 10px;
+}
+
+#control-pad {
+  width: 100%;
 }
 
 #screen {
@@ -29,6 +33,7 @@ code {
   color: #222;
   font-family: DigiMono;
   border-radius: .5em;
+  margin-bottom: 10px;
 }
 
 #display {
@@ -42,11 +47,10 @@ code {
 }
 
 button {
-  width: 100%;
-  height: 100%;
+  width: 95px;
+  height: 40px;
 }
 
-.btn {
-  width: 100%;
-  margin: 0;
+.double-wide-btn {
+  width: 190px;
 }

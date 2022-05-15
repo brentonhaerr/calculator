@@ -11,7 +11,7 @@ const ControlPad = () => {
           <FunctionButton id="display-clear" action={acts.CLEAR} name="C" />
         </div>
         <div className="col-6">
-          <FunctionButton id="clear" action={acts.ALLCLEAR} name="AC" />
+          <FunctionButton id="clear" action={acts.ALLCLEAR} name="AC" classes="double-wide-btn" />
         </div>
       </div>
 
