@@ -3,9 +3,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Display from './components/Display';
 import CalcContextProvider from './contexts/CalcContext';
-import NumpadButton from './components/NumpadButton';
-import FunctionButton from './components/FunctionButton';
-import * as acts from './constants/calc_actions';
 import ControlPad from './components/ControlPad';
 
 function App() {

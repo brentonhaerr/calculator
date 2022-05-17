@@ -6,11 +6,11 @@ const NumpadButton = (props) => {
   const { dispatch } = useContext(CalcContext);
 
   return (
-      <button id={props.id} className=""
+      <button id={props.id} className={"numpad-button " + props.classes}
         onClick={() => {
           dispatch({ type: acts.NUMBER_ENTRY, value: props.value })
         }}>
-        {props.value}
+        <span className="button-text">{props.value}</span>
       </button>
   );
 }
