@@ -7,8 +7,8 @@ const ControlPad = () => {
   return (
     <section id="control-pad">
 
-      <FunctionButton id="display-clear" action={acts.CLEAR} name="C" classes="double-wide-btn" />
-      <FunctionButton id="clear" action={acts.ALLCLEAR} name="AC" classes="double-wide-btn" />
+      <FunctionButton id="display-clear" action={acts.CLEAR} name="C" classes="double-wide-btn top-left-button" />
+      <FunctionButton id="clear" action={acts.ALLCLEAR} name="AC" classes="double-wide-btn top-right-button" />
       <NumpadButton id="seven" value="7" classes=""/>
       <NumpadButton id="eight" value="8" />
       <NumpadButton id="nine" value="9" />
@@ -21,10 +21,10 @@ const ControlPad = () => {
       <NumpadButton id="two" value="2" />
       <NumpadButton id="three" value="3" />
       <FunctionButton id="multiply" action={acts.MULTIPLY} name="&#215;" />
-      <NumpadButton id="zero" value="0" />
+      <NumpadButton id="zero" value="0" classes="bottom-left-button" />
       <FunctionButton id="decimal" action={acts.DECIMAL} name="." />
       <FunctionButton id="equals" action={acts.EQUALS} name="=" />
-      <FunctionButton id="divide" action={acts.DIVIDE} name="/" />
+      <FunctionButton id="divide" action={acts.DIVIDE} name="/" classes="bottom-right-button" />
 
     </section>
   )

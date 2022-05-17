@@ -39,16 +39,19 @@ code {
 #display {
   min-height: 1.5em;
   overflow-x: clip;
+  font-size: 3em;
 }
 
 #ops-list {
   min-height: 1.5em;
   overflow-x: clip;
+  font-size: 2em;
 }
 
 button {
   width: 95px;
   height: 65px;
+  border: 1px solid black;
 }
 
 .button-text {
@@ -56,6 +59,27 @@ button {
   font-size: 2em;
 }
 
+.function-button {
+  background-color: lightblue;
+}
+
+.numpad-button {
+  background-color: darkorange;
+}
+
 .double-wide-btn {
   width: 190px;
+}
+
+.top-left-button {
+  border-radius: .5em 0 0 0;
+}
+.top-right-button {
+  border-radius: 0 .5em 0 0;
+}
+.bottom-right-button {
+  border-radius: 0 0 .5em 0;
+}
+.bottom-left-button {
+  border-radius: 0 0 0 .5em;
 }
