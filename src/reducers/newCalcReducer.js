@@ -11,13 +11,15 @@ export const newCalcReducer = (state, action) => {
     case act.EQUALS:
       return process_equals(state, action);
     case act.ALLCLEAR:
-      return process_clear(state, action);
+      return process_all_clear(state, action);
     case act.SUBTRACT:
       return process_subtraction_operation(state, action);
     case act.ADD:
     case act.DIVIDE:
     case act.MULTIPLY:
       return process_non_subtraction_operations(state, action);
+    case act.CLEAR:
+      return process_display_clear(state, action);
     default:
       return state;
   }
@@ -37,7 +39,15 @@ function process_numbers(state, action) {
   return { ...state, last_action: action, display: state.display + action.value };
 }
 
-function process_clear(state, action) {
+function process_display_clear(state, action) {
+  if (state.mode === modes.SHOW_TOTAL) {
+    return { ...state, ops_list: '', last_action: action, display: '0', mode: modes.SHOW_TOTAL }
+  } else {
+    return { ...state, last_action: action, display: '0', mode: modes.SHOW_INPUT }
+  }
+}
+
+function process_all_clear(state, action) {
   return { ...state, ops_list: '', last_action: action, display: '0', mode: modes.SHOW_TOTAL }
 }
 
@@ -53,7 +63,7 @@ function process_decimal(state, action) {
   }
 
   // Otherwise add a decimal
-  return { ...state, last_action: action, display: state.display+'.' }
+  return { ...state, last_action: action, display: state.display + '.' }
 }
 
 function process_equals(state, action) {
@@ -76,6 +86,7 @@ function process_equals(state, action) {
   // Otherwise, return the total, add it to display and ops list, and set
   // the mode to modes.SHOW_TOTAL
   let total = evaluate(state.ops_list + state.display);
+  total = Math.round((total + Number.EPSILON) * 10000000) / 10000000;
   return { ...state, last_action: action, display: total, ops_list: state.ops_list + state.display + "=" + total, mode: modes.SHOW_TOTAL }
 }
 
